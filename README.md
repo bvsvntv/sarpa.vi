@@ -1,10 +1,10 @@
 <p align="center">
-    <strong>saap.vi</strong>
+    <strong>sarpa.vi</strong>
 </p>
 
 I developed this simple Snake Game using the SDL2 library in C.
 I was inspired by a video on the [CS50](https://www.youtube.com/@cs50) YouTube channel, which demonstrated [2D Games in C using SDL](https://www.youtube.com/watch?v=yFLa3ln16w0).
-The name **`saap.vi`** (with 'saap' meaning 'snake') playfully describes the snake-like behavior of my friends, while 'vi' refers to the Vim keybindings used for controls.
+The name **`sarpa.vi`** (with 'sarpa/सर्प' meaning 'snake' in Nepali) playfully describes the snake-like behavior of my friends, while 'vi' refers to the Vim keybindings used for controls.
 
 ## Project setup
 
@@ -28,12 +28,12 @@ sudo apt-get install libsdl2-2.0-0 libsdl2-dev -y
 
 - Clone the repository
     ```bash
-    git clone git@github.com:bvsvntv/saap.vi.git
+    git clone git@github.com:bvsvntv/sarpa.vi.git
     ```
 - Navigate to the project directory
 
     ```bash
-    cd saap.vi
+    cd sarpa.vi
     ```
 - Project Structure
     - `logic.{h,c}` - Contains core game state and mechanics

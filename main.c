@@ -10,7 +10,7 @@
 
 int main() {
     srand(time(0));
-    init_saap();
+    init_sarpa();
     generate_food();
 
     if (SDL_Init(SDL_INIT_VIDEO) != 0) {
@@ -18,7 +18,7 @@ int main() {
         return EXIT_FAILURE;
     }
 
-    SDL_Window *window = SDL_CreateWindow("Saap",
+    SDL_Window *window = SDL_CreateWindow("Sarpa",
                                           SDL_WINDOWPOS_CENTERED,
                                           SDL_WINDOWPOS_CENTERED,
                                           WINDOW_WIDTH,
@@ -45,7 +45,7 @@ int main() {
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderClear(renderer);
     render_grid(renderer, grid_x, grid_y);
-    render_saap(renderer, grid_x, grid_y);
+    render_sarpa(renderer, grid_x, grid_y);
     render_food(renderer, grid_x, grid_y);
     SDL_RenderPresent(renderer);
 
@@ -79,7 +79,7 @@ int main() {
         if (!paused) {
             SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
             SDL_RenderClear(renderer);
-            move_saap();
+            move_sarpa();
             if (check_collision()) {
                 quit = 1;
                 break;
@@ -87,7 +87,7 @@ int main() {
                 eat_food();
             }
             render_grid(renderer, grid_x, grid_y);
-            render_saap(renderer, grid_x, grid_y);
+            render_sarpa(renderer, grid_x, grid_y);
             render_food(renderer, grid_x, grid_y);
             SDL_RenderPresent(renderer);
         }

@@ -16,12 +16,12 @@ void render_grid(SDL_Renderer * renderer, int x, int y) {
     }
 }
 
-void render_saap(SDL_Renderer *renderer, int x, int y) {
+void render_sarpa(SDL_Renderer *renderer, int x, int y) {
     SDL_SetRenderDrawColor(renderer, 0x45, 0xFE, 0x02, 255);
     SDL_Rect segment;
     segment.w = CELL_SIZE;
     segment.h = CELL_SIZE;
-    Saap *current = head;
+    Sarpa *current = head;
     while (current != NULL) {
         segment.x = x + current->x;
         segment.y = y + current->y;

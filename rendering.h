@@ -3,7 +3,7 @@
 
 #include <SDL2/SDL.h>
 
-void render_saap(SDL_Renderer *renderer, int x, int y);
+void render_sarpa(SDL_Renderer *renderer, int x, int y);
 void render_food(SDL_Renderer *renderer, int x, int y);
 void render_grid(SDL_Renderer * renderer, int x, int y);
 

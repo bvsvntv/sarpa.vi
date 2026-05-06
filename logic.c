@@ -2,22 +2,22 @@
 #include "./logic.h"
 #include "./game.h"
 
-Saap *head = NULL;
-Saap *tail = NULL;
+Sarpa *head = NULL;
+Sarpa *tail = NULL;
 Food food;
 
-void init_saap() {
-    Saap *saap = malloc(sizeof(Saap));
-    saap->x = (rand() % COLS) * CELL_SIZE;
-    saap->y = (rand() % ROWS) * CELL_SIZE;
-    saap->direction = RIGHT;
-    saap->next = NULL;
-    head = saap;
-    tail = saap;
+void init_sarpa() {
+    Sarpa *sarpa = malloc(sizeof(Sarpa));
+    sarpa->x = (rand() % COLS) * CELL_SIZE;
+    sarpa->y = (rand() % ROWS) * CELL_SIZE;
+    sarpa->direction = RIGHT;
+    sarpa->next = NULL;
+    head = sarpa;
+    tail = sarpa;
 }
 
 void add_segment() {
-    Saap *segment = malloc(sizeof(Saap));
+    Sarpa *segment = malloc(sizeof(Sarpa));
     segment->x = tail->x;
     segment->y = tail->y;
     segment->direction = tail->direction;
@@ -26,7 +26,7 @@ void add_segment() {
     tail = segment;
 }
 
-void move_saap() {
+void move_sarpa() {
     int prev_x = head->x;
     int prev_y = head->y;
 
@@ -37,7 +37,7 @@ void move_saap() {
         case RIGHT: head->x += CELL_SIZE; break;
     }
 
-    Saap *current = head->next;
+    Sarpa *current = head->next;
     while (current != NULL) {
         int temp_x = current->x;
         int temp_y = current->y;
@@ -50,20 +50,20 @@ void move_saap() {
 }
 
 void generate_food() {
-    bool inside_saap;
+    bool inside_sarpa;
     do {
-        inside_saap = false;
+        inside_sarpa = false;
         food.x = (rand() % COLS);
         food.y = (rand() % ROWS);
-        Saap *current = head;
+        Sarpa *current = head;
         while (current != NULL) {
             if (current->x == food.x * CELL_SIZE && current->y == food.y * CELL_SIZE) {
-                inside_saap = true;
+                inside_sarpa = true;
                 break;
             }
             current = current->next;
         }
-    } while (inside_saap);
+    } while (inside_sarpa);
 }
 
 void eat_food() {
@@ -78,7 +78,7 @@ bool check_collision() {
         head->y < 0 || head->y >= ROWS * CELL_SIZE) {
         return true;
     }
-    Saap *current = head->next;
+    Sarpa *current = head->next;
     while (current != NULL) {
         if (head->x == current->x && head->y == current->y) {
             return true;

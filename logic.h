@@ -5,25 +5,25 @@
 
 typedef enum { UP, DOWN, LEFT, RIGHT } Direction;
 
-typedef struct Saap {
+typedef struct Sarpa {
     int x;
     int y;
     Direction direction;
-    struct Saap *next;
-} Saap;
+    struct Sarpa *next;
+} Sarpa;
 
 typedef struct {
     int x;
     int y;
 } Food;
 
-extern Saap *head;
-extern Saap *tail;
+extern Sarpa *head;
+extern Sarpa *tail;
 extern Food food;
 
-void init_saap();
+void init_sarpa();
 void add_segment();
-void move_saap();
+void move_sarpa();
 void generate_food();
 void eat_food();
 bool check_collision();
