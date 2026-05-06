@@ -57,6 +57,7 @@ int main() {
         while (!game_started && !quit) {
             while (SDL_PollEvent(&event)) {
                 if (event.type == SDL_QUIT) quit = 1;
+                if(event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_q && event.key.keysym.mod & (KMOD_CTRL | KMOD_GUI)) quit = 1;
                 if (event.type == SDL_KEYDOWN && (event.key.keysym.sym == SDLK_i || event.key.keysym.sym == SDLK_RETURN)) game_started = 1;
             }
         }
