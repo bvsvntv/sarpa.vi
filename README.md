@@ -18,6 +18,7 @@ The name **`sarpa.vi`** (with 'sarpa/सर्प' meaning 'snake' in Nepali) pl
 ```bash
 sudo xbps-install gcc SDL2 SDL2-devel -y
 ```
+
 #### Ubuntu
 
 ```bash
@@ -27,29 +28,32 @@ sudo apt-get install libsdl2-2.0-0 libsdl2-dev -y
 ### Getting Started
 
 - Clone the repository
-    ```bash
-    git clone git@github.com:bvsvntv/sarpa.vi.git
-    ```
+
+  ```bash
+  git clone git@github.com:bvsvntv/sarpa.vi.git
+  ```
+
 - Navigate to the project directory
 
-    ```bash
-    cd sarpa.vi
-    ```
+  ```bash
+  cd sarpa.vi
+  ```
+
 - Project Structure
-    - `logic.{h,c}` - Contains core game state and mechanics
-    - `rendering.{h,c}` - Handles all SDL-specific drawing logic
-    - `main.c` - Contains the game loop and event handling, delegating logic and rendering to the respective modules
+  - `logic.{h,c}` - Contains core game state and mechanics
+  - `rendering.{h,c}` - Handles all SDL-specific drawing logic
+  - `main.c` - Contains the game loop and event handling, delegating logic and rendering to the respective modules
 
 - Build and run the game using `make`
 
-    ```bash
-    make run
-    ```
+  ```bash
+  make run
+  ```
 
 ## Controls
 
 | KEY                         | ACTION              |
-| ----------------------------| --------------------|
+| --------------------------- | ------------------- |
 | `i`/`<enter>`               | start game          |
 | `h`                         | move left           |
 | `j`                         | move down           |
@@ -57,4 +61,4 @@ sudo apt-get install libsdl2-2.0-0 libsdl2-dev -y
 | `l`                         | move right          |
 | `esc`                       | quit the game       |
 | `<space>`                   | pause/play the game |
-| `<super>/<control>+q`       | quit the game       |
+| `<super>`/`<control>` + `q` | quit the game       |
