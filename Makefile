@@ -2,7 +2,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra
 LIBS = -lSDL2
 INCLUDES = -I/usr/include/SDL2/
-SRCS = main.c logic.c rendering.c
+SRCS = ./src/main.c ./src/logic.c ./src/rendering.c
 OBJS = ${SRCS:.c=.o}
 MAIN = main.bin
 
@@ -11,6 +11,6 @@ $(MAIN) : ${OBJS}
 .c.o:
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 clean:
-	$(RM) *.o *~ $(MAIN)
+	$(RM) $(OBJS) $(MAIN)
 run: clean $(MAIN)
 	./main.bin
