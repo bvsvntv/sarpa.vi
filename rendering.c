@@ -7,8 +7,8 @@ void render_grid(SDL_Renderer *renderer, int x, int y) {
   SDL_Rect cell;
   cell.w = CELL_SIZE;
   cell.h = CELL_SIZE;
-  for (int i = 0; i < ROWS; i++) {
-    for (int j = 0; j < COLS; j++) {
+  for (int i = 0; i < WINDOW_WIDTH; i++) {
+    for (int j = 0; j < WINDOW_HEIGHT; j++) {
       cell.x = x + (i * CELL_SIZE);
       cell.y = y + (j * CELL_SIZE);
       SDL_RenderDrawRect(renderer, &cell);
