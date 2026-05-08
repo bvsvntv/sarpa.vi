@@ -19,8 +19,8 @@ void render_grid(SDL_Renderer *renderer, int x, int y) {
 void render_sarpa(SDL_Renderer *renderer, int x, int y) {
   SDL_SetRenderDrawColor(renderer, 0x45, 0xFE, 0x02, 255);
   SDL_Rect segment;
-  segment.w = CELL_SIZE;
-  segment.h = CELL_SIZE;
+  segment.w = CELL_SIZE * 0.85;
+  segment.h = CELL_SIZE * 0.85;
   Sarpa *current = head;
   while (current != NULL) {
     segment.x = x + current->x;
@@ -33,8 +33,8 @@ void render_sarpa(SDL_Renderer *renderer, int x, int y) {
 void render_food(SDL_Renderer *renderer, int x, int y) {
   SDL_SetRenderDrawColor(renderer, 0xFA, 0x4E, 0x58, 255);
   SDL_Rect foodRect;
-  foodRect.w = CELL_SIZE;
-  foodRect.h = CELL_SIZE;
+  foodRect.w = CELL_SIZE * 0.85;
+  foodRect.h = CELL_SIZE * 0.85;
   foodRect.x = x + food.x * CELL_SIZE;
   foodRect.y = y + food.y * CELL_SIZE;
   SDL_RenderFillRect(renderer, &foodRect);
