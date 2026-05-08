@@ -39,7 +39,7 @@ int main() {
 
   SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
   SDL_RenderClear(renderer);
-  render_grid(renderer, grid_x, grid_y);
+  // render_grid(renderer, grid_x, grid_y);
   render_sarpa(renderer, grid_x, grid_y);
   render_food(renderer, grid_x, grid_y);
   SDL_RenderPresent(renderer);
@@ -109,7 +109,7 @@ int main() {
       } else {
         eat_food();
       }
-      render_grid(renderer, grid_x, grid_y);
+      // render_grid(renderer, grid_x, grid_y);
       render_sarpa(renderer, grid_x, grid_y);
       render_food(renderer, grid_x, grid_y);
       SDL_RenderPresent(renderer);
