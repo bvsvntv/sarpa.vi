@@ -7,13 +7,34 @@ Sarpa *tail = NULL;
 Food food;
 
 void init_sarpa() {
-  Sarpa *sarpa = malloc(sizeof(Sarpa));
-  sarpa->x = (rand() % COLS) * CELL_SIZE;
-  sarpa->y = (rand() % ROWS) * CELL_SIZE;
-  sarpa->direction = RIGHT;
-  sarpa->next = NULL;
-  head = sarpa;
-  tail = sarpa;
+  int startX = (rand() % (COLS - 2)) * CELL_SIZE;
+  int startY = (rand() % ROWS) * CELL_SIZE;
+
+  // Head
+  Sarpa *headSeg = malloc(sizeof(Sarpa));
+  headSeg->x = startX;
+  headSeg->y = startY;
+  headSeg->direction = RIGHT;
+
+  // Middle
+  Sarpa *midSeg = malloc(sizeof(Sarpa));
+  midSeg->x = startX - CELL_SIZE;
+  midSeg->y = startY;
+  midSeg->direction = RIGHT;
+
+  // Tail
+  Sarpa *tailSeg = malloc(sizeof(Sarpa));
+  tailSeg->x = startX - (2 * CELL_SIZE);
+  tailSeg->y = startY;
+  tailSeg->direction = RIGHT;
+
+  // Linking head->mid->tail
+  headSeg->next = midSeg;
+  midSeg->next = tailSeg;
+  tailSeg->next = NULL;
+
+  head = headSeg;
+  tail = tailSeg;
 }
 
 void add_segment() {
