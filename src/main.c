@@ -1,4 +1,5 @@
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_ttf.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -18,6 +19,12 @@ int main() {
     return EXIT_FAILURE;
   }
 
+  if (TTF_Init() != 0) {
+    fprintf(stderr, "Could not initialize sdl2_ttf: %s\n", SDL_GetError());
+    SDL_Quit();
+    return EXIT_FAILURE;
+  }
+
   SDL_Window *window =
       SDL_CreateWindow("Sarpa", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
                        WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_SHOWN);
@@ -34,20 +41,31 @@ int main() {
     return EXIT_FAILURE;
   }
 
+  TTF_Font *font = TTF_OpenFont("./assets/PressStart2P-Regular.ttf", 24);
+  if (!font) {
+    fprintf(stderr, "Could not load font: %s\n", TTF_GetError());
+    return EXIT_FAILURE;
+  }
+
   int grid_x = (WINDOW_WIDTH - (COLS * CELL_SIZE)) / 2;
   int grid_y = (WINDOW_HEIGHT - (ROWS * CELL_SIZE)) / 2;
 
   SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
   SDL_RenderClear(renderer);
+
   // render_grid(renderer, grid_x, grid_y);
   render_sarpa(renderer, grid_x, grid_y);
   render_food(renderer, grid_x, grid_y);
+  render_score(renderer, font, 0);
   SDL_RenderPresent(renderer);
 
   SDL_Event event;
   int quit = 0;
   int game_started = 0;
   int paused = 0;
+
+  int score = 0;
+
   while (!quit) {
     while (!game_started && !quit) {
       while (SDL_PollEvent(&event)) {
@@ -107,11 +125,13 @@ int main() {
         quit = 1;
         break;
       } else {
+        score += 1;
         eat_food();
       }
       // render_grid(renderer, grid_x, grid_y);
       render_sarpa(renderer, grid_x, grid_y);
       render_food(renderer, grid_x, grid_y);
+      render_score(renderer, font, score);
       SDL_RenderPresent(renderer);
     }
 

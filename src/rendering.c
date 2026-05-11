@@ -39,3 +39,35 @@ void render_food(SDL_Renderer *renderer, int x, int y) {
   foodRect.y = y + food.y * CELL_SIZE;
   SDL_RenderFillRect(renderer, &foodRect);
 }
+
+void render_score(SDL_Renderer *renderer, TTF_Font *font, int score) {
+  char text[48];
+  snprintf(text, sizeof(text), "score:%d", score);
+
+  SDL_Color textColor = {0x45, 0xFE, 0x02, 255};
+
+  SDL_Surface *textSurface = TTF_RenderText_Solid(font, text, textColor);
+
+  if (!textSurface) {
+    fprintf(stderr, "Could not create text surface: %s\n", TTF_GetError());
+    return;
+  }
+
+  SDL_Texture *textTexture =
+      SDL_CreateTextureFromSurface(renderer, textSurface);
+
+  if (!textTexture) {
+    fprintf(stderr, "Could not create text texture: %s\n", SDL_GetError());
+    SDL_FreeSurface(textSurface);
+    return;
+  }
+
+  SDL_Rect textRect = {WINDOW_WIDTH - textSurface->w - 10,
+                       WINDOW_HEIGHT - textSurface->h - 10, textSurface->w,
+                       textSurface->h};
+
+  SDL_RenderCopy(renderer, textTexture, NULL, &textRect);
+
+  SDL_DestroyTexture(textTexture);
+  SDL_FreeSurface(textSurface);
+}

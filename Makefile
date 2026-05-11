@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Wall -Wextra
-LIBS = -lSDL2
+LIBS = -lSDL2 -lSDL2_ttf
 INCLUDES = -I/usr/include/SDL2/
 SRCS = ./src/main.c ./src/logic.c ./src/rendering.c
 OBJS = ${SRCS:.c=.o}
