@@ -25,7 +25,7 @@ void init_sarpa();
 void add_segment();
 void move_sarpa();
 void generate_food();
-void eat_food();
+bool eat_food();
 bool check_collision();
 
 #endif

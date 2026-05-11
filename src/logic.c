@@ -96,11 +96,14 @@ void generate_food() {
   } while (inside_sarpa);
 }
 
-void eat_food() {
+bool eat_food() {
   if (head->x == food.x * CELL_SIZE && head->y == food.y * CELL_SIZE) {
     generate_food();
     add_segment();
+    return true;
   }
+
+  return false;
 }
 
 bool check_collision() {

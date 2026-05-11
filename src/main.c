@@ -125,8 +125,8 @@ int main() {
         quit = 1;
         break;
       } else {
-        score += 1;
-        eat_food();
+        if (eat_food())
+          score += 1;
       }
       // render_grid(renderer, grid_x, grid_y);
       render_sarpa(renderer, grid_x, grid_y);
