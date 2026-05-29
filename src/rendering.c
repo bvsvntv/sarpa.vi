@@ -2,22 +2,12 @@
 #include "./game.h"
 #include "./logic.h"
 
-void render_grid(SDL_Renderer *renderer, int x, int y) {
-  SDL_SetRenderDrawColor(renderer, 0xCC, 0xCC, 0xCC, 255);
-  SDL_Rect cell;
-  cell.w = CELL_SIZE;
-  cell.h = CELL_SIZE;
-  for (int i = 0; i < WINDOW_WIDTH; i++) {
-    for (int j = 0; j < WINDOW_HEIGHT; j++) {
-      cell.x = x + (i * CELL_SIZE);
-      cell.y = y + (j * CELL_SIZE);
-      SDL_RenderDrawRect(renderer, &cell);
-    }
-  }
-}
+const SDL_Color COLOR_RED = {.r = 0xFA, .g = 0x4E, .b = 0x58, .a = 255};
+const SDL_Color COLOR_GREEN = {.r = 0x45, .g = 0xFE, .b = 0x02, .a = 255};
 
 void render_sarpa(SDL_Renderer *renderer, int x, int y) {
-  SDL_SetRenderDrawColor(renderer, 0x45, 0xFE, 0x02, 255);
+  SDL_SetRenderDrawColor(renderer, COLOR_GREEN.r, COLOR_GREEN.g, COLOR_GREEN.b,
+                         COLOR_GREEN.a);
   SDL_Rect segment;
   segment.w = CELL_SIZE * 0.85;
   segment.h = CELL_SIZE * 0.85;
@@ -31,7 +21,8 @@ void render_sarpa(SDL_Renderer *renderer, int x, int y) {
 }
 
 void render_food(SDL_Renderer *renderer, int x, int y) {
-  SDL_SetRenderDrawColor(renderer, 0xFA, 0x4E, 0x58, 255);
+  SDL_SetRenderDrawColor(renderer, COLOR_RED.r, COLOR_RED.g, COLOR_RED.b,
+                         COLOR_RED.a);
   SDL_Rect foodRect;
   foodRect.w = CELL_SIZE * 0.85;
   foodRect.h = CELL_SIZE * 0.85;
